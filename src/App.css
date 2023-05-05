@@ -1,7 +1,7 @@
 .box {
-  width: 100px; 
+  width: 100px;
   height: 100px;
-  margin: 0 30px;
+  margin: 10px 30px;
   cursor: pointer;
 }
 
@@ -10,4 +10,30 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
+}
+
+.boxes {
+  display: flex;
+  flex-direction: row;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.disabled {
+  cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+  .boxes {
+    flex-wrap: wrap;
+    /* max-width: 300px; */
+  }
+  .box {
+    width: calc(3 /100%);
+  }
 }

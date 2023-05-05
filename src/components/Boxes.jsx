@@ -1,13 +1,12 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 
-function App() {
+const Boxes = () => {
   const [color, setColor] = useState([]);
   const [rightBox, setRightBox] = useState();
   const [won, setWon] = useState(false);
   const [lost, setLost] = useState(false);
   const [clicked, setClicked] = useState(false);
-  const [disabled, setDisabled] = useState(false);
 
   function generateColor() {
     setColor({
@@ -31,8 +30,7 @@ function App() {
       setWon(false);
       setLost(true);
     }
-    setClicked(true);
-    setDisabled(true);
+    setClicked(true)
   }
 
   function restartGame() {
@@ -47,12 +45,10 @@ function App() {
     setRightBox(Math.floor(Math.random() * 4));
     setLost(false);
     setWon(false);
-    setClicked(false);
   }
 
   useEffect(() => {
     generateColor();
-    setClicked(false);
   }, []);
 
   return (
@@ -62,32 +58,32 @@ function App() {
           <div className="boxes__wrapper">
             <div className="boxes">
               <div
-                className="box disabled"
+                className="box"
                 style={{
                   backgroundColor: `#${(color?.a, color?.c, color?.b)}`,
                 }}
-                // onClick={() => choseCorrectBox(0)}
+                onClick={() => choseCorrectBox(0)}
               ></div>
               <div
-                className="box disabled"
+                className="box"
                 style={{
-                  backgroundColor: `#${(color?.a, color?.b, color?.a)}`,
+                  backgroundColor: `#${(color?.c, color?.b, color?.a)}`,
                 }}
-                // onClick={() => choseCorrectBox(1)}
+                onClick={() => choseCorrectBox(1)}
               ></div>
               <div
-                className="box disabled"
+                className="box"
                 style={{
                   backgroundColor: `#${(color?.d, color?.e, color?.f)}`,
                 }}
-                // onClick={() => choseCorrectBox(2)}
+                onClick={() => choseCorrectBox(2)}
               ></div>
               <div
-                className="box disabled"
+                className="box"
                 style={{
                   backgroundColor: `#${(color?.f, color?.d, color?.e)}`,
                 }}
-                // onClick={() => choseCorrectBox(3)}
+                onClick={() => choseCorrectBox(3)}
               ></div>
             </div>
           </div>
@@ -95,6 +91,7 @@ function App() {
           <div className="boxes__wrapper">
             <div className="boxes">
               <div
+                disabled={true}
                 className="box"
                 style={{
                   backgroundColor: `#${(color?.a, color?.c, color?.b)}`,
@@ -144,6 +141,6 @@ function App() {
       </div>
     </>
   );
-}
+};
 
-export default App;
+export default Boxes;
